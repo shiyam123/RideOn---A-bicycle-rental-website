@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Cycle Properties</title>
+    <link rel="stylesheet" type="text/css" href="http://localhost/RideOn/add_cycle_style.css"/>
+  </head>
+  <body>
+    <form action="http://localhost/RideOn/add_cycle.php" method="post">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username"><br><br>
+  
+  <label for="brand">Brand:</label>
+  <input type="text" id="brand" name="brand"><br><br>
+  
+  <label for="type">Type:</label>
+  <select id="type" name="type">
+    <option value="gear">Gear</option>
+    <option value="non-gear">Non-Gear</option>
+    <option value="electric">Electric</option>
+  </select><br><br>
+  
+  <label for="year">Year of Purchase:</label>
+  <input type="text" id="year" name="year"><br><br>
+  
+  <label for="bill">Bill Amount:</label>
+  <input type="text" id="bill" name="bill"><br><br>
+  
+  <label for="phone">Phone Number:</label>
+  <input type="text" id="phone" name="phone"><br><br>
+
+  <p>
+      <input type="checkbox" id="calculatePriceCheckbox" onchange="if (this.checked) { calculatePrice(); }">
+      <label for="calculatePriceCheckbox">Calculate Price</label>
+  </p>
+  <p id="result"></p>
+  <h3 id="msg"></h3>
+  
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+  function calculatePrice() {
+        // Get the year of purchase from the input
+        var yearOfPurchase = parseInt(document.getElementById("year").value);
+        // Calculate the current year
+        var currentYear = new Date().getFullYear();
+        // Initialize the price
+        var price = parseInt(document.getElementById("bill").value);
+        // Calculate the number of years since the year of purchase
+        var numberOfYears = currentYear - yearOfPurchase;
+        // Apply the depreciation percentage of 5% on each year
+        for (var i = 0; i < numberOfYears; i++) {
+          price *= 0.80;
+        }
+        // Display the result
+        document.getElementById("result").innerHTML = "The reselling price of the cycle is <h2 id='amt'><b><span>&#x20B9;</span>" + price.toFixed(2) + "</b></h2>";
+        document.getElementById("msg").innerHTML="Please click confirm to sell your cycle, If satisfied with the price";
+
+      }
+</script>
+  </body>
+</html>

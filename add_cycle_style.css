@@ -1,0 +1,61 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 50px;
+  background-color: #F7F7F7;
+}
+
+form {
+  background-color: #FFFFFF;
+  padding: 40px;
+  box-shadow: 0px 0px 10px #BBBBBB;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0 auto;
+  width: 500px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 20px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"], select {
+  padding: 10px;
+  font-size: 18px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+#calculatePriceCheckbox {
+  margin-right: 10px;
+}
+
+#amt {
+  font-size: 22px;
+  font-weight: bold;
+  color: #4CAF50;
+  margin-top: 20px;
+}
+
+#msg,#result{
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  margin-top: 20px;
+}

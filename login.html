@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="http://localhost/Blog%20website/style.css">
+</head>
+<body background="http://localhost/Blog%20website/loginback.webp">
+    <div class="center">
+        <h1>Login</h1>
+        <form method="post" action="http://localhost/RideOn/login.php">
+        
+        <div class="txt_field">
+            <input type="text" name="email" required>
+            <span></span>
+            <label> Email </label>
+        </div>
+        <div class="txt_field">
+            <input type="text" name="pass" required>
+            <span></span>
+            <label> Password </label>
+        </div>
+        <div class="pass">Forgot Password?
+
+
+
+             <p><?php echo $err; ?></p>
+        </div>
+        <input type="submit" value="login" name="submit"> 
+        <div class="signup_link">
+            Not a member? <a href="http://localhost/RideOn/signup.html">SignUp</a>
+        </div>
+        
+        </form>
+    </div>
+
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+

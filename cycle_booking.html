@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cycle Booking</title>
+</head>
+<body>
+  <h1>Available Cycles</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Cycle Name</th>
+        <th>Brand</th>
+        <th>Type</th>
+        <th>Availability</th>
+        <th>Rent/Hour (INR)</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+        // Connect to the database
+        $conn = mysqli_connect("localhost", "root", "", "RideOn");
+
+        // Fetch the available cycles
+        $result = mysqli_query($conn, "SELECT Sno, Cycleno, Cyclebrand, Cycletype, Availability, Rent FROM cycle WHERE Availability = 'yes'");
+        while ($row = mysqli_fetch_assoc($result)) {
+          echo "<tr id='cycle-" . $row['Sno'] . "'>";
+          echo "<td>" . $row['sno'] . "</td>";
+          echo "<td>" . $row['Cycle_name'] . "</td>";
+          echo "<td>" . $row['brand'] . "</td>";
+          echo "<td>" . $row['type'] . "</td>";
+          echo "<td>" . $row['availability'] . "</td>";
+          echo "<td>" . $row['rent_per_hour'] . "</td>";
+          echo "<td><button onclick='bookCycle(".$row['sno'].")'>Book</button></td>";
+          echo "</tr>";
+        }
+
+        // Close the database connection
+        mysqli_close($conn);
+      ?>
+    </tbody>
+  </table>
+
+  <!-- Script to handle booking a cycle -->
+  <script>
+    function bookCycle(cycleId) {
+      // Send an AJAX request to the server to book the cycle
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "book_cycle.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+          // Update the UI to reflect the booked status
+          const row = document.getElementById(`cycle-${cycleId}`);
+          row.innerHTML = `
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+            <td>No</td>
+            <td>...</td>
+            <td>Booked</td>
+          `;
+        }
+      };
+      xhr.send(`cycleId=${cycleId}`);
+
+  </script>
+</body>
+</html>
